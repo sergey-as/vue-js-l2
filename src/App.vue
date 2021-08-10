@@ -1,17 +1,37 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Inp value : {{ inputValue }}</h1>
+
+    <!--    <input type="text" :value="inputValue" @input="handleInputChange">-->
+    <!--    <input type="text" :value="inputValue" @input="inputValue = $event.target.value">-->
+    <input type="text" v-model="inputValue" @keypress="handleInputChange">
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      inputValue: '123'
+    }
+  },
+  methods: {
+    // handleInputChange({target: {value}}) {
+    //   this.inputValue = value;
+    // },
+    handleInputChange(e) {
+      const {target: {value}, preventDefault} = e;
+      console.log(value);
+      if (value.includes('0')) {
+        preventDefault();
+        // return;
+      }
+      // this.inputValue = value;
+      15:30
+    }
   }
 }
 </script>
@@ -26,3 +46,7 @@ export default {
   margin-top: 60px;
 }
 </style>
+
+<!--inputs-->
+<!--lifecycle-->
+<!--work with api-->
